@@ -7,7 +7,7 @@ var exec = require('child_process').exec;
 // Create shutdown function
 function shutdown(callback) {
   console.log('Am i invoking?');
-  exec(`display /ReactComponents.png`, function (error, stdout, stderr) {
+  exec(`ReactComponents.png`, function (error, stdout, stderr) {
     callback(stdout);
   });
 }
