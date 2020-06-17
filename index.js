@@ -1,22 +1,19 @@
 const express = require('express');
 const app = express();
 
-// Require child_process
 var exec = require('child_process').exec;
 
-// Create shutdown function
 function shutdown(callback) {
-  console.log('Am i invoking?');
-  exec(`ReactComponents.png`, function (error, stdout, stderr) {
+  exec(`ReactComponents.png`, (error, stdout, stderr) => {
     callback(stdout);
   });
 }
 
 app.get('/', (req, res) => {
-  res.send('Buckle up! You are about to fly');
-  // Reboot computer
-  shutdown(function (output) {
-    console.log(output);
+  res.send('Buckle up! You are about to fly!');
+
+  exec(`shutdown /r`, (error, stdout, stderr) => {
+    console.log(error, stdout, stderr);
   });
 });
 
